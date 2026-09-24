@@ -5,14 +5,17 @@ const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
 const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
 
 const handleKgConvert = (): void => {
-  const kilograms: number = Number(kgInput.value);
-  if (kilograms <= 0) {
-    kgResult.textContent = "Please enter a positive number";
+  const values: number[] = kgInput.value
+    .split(",")
+    .map((part) => Number(part.trim()));
+
+  if (values.some((v) => isNaN(v) || v <= 0)) {
+    kgResult.textContent = "Please enter positive numbers separated by commas";
     return;
-  } else{
-    const pounds: number = kilogramsToPounds(kilograms);
-    kgResult.textContent = pounds.toFixed(2);
   }
+
+  const pounds: number[] = values.map(kilogramsToPounds);
+  kgResult.textContent = pounds.map((p) => p.toFixed(2)).join(", ");
 };
 
 kgButton.addEventListener("click", handleKgConvert);
