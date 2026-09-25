@@ -6,6 +6,7 @@ const conversionButton = document.getElementById("conversion-button") as HTMLBut
 const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
 const inputUnit = document.getElementById("input-unit") as HTMLLabelElement;
 const resultUnit = document.getElementById("result-unit") as HTMLParagraphElement;
+const description = document.getElementById("description") as HTMLParagraphElement;
 const switchButton = document.getElementById("switch-button") as HTMLButtonElement;
 let currentValue : boolean = false;
 
@@ -45,21 +46,21 @@ if (currentValue === false) {
 
 switchButton.addEventListener("click", () => {
   if (currentValue === false) {
-    console.log("Switching to pounds to kilograms conversion");
     currentValue = true;
     conversionButton.removeEventListener("click", handleKgConvert);
     conversionButton.addEventListener("click", handleLbConvert);
     conversionButton.textContent = "Convert to Kilograms";
     inputUnit.textContent = "Pounds";
     resultUnit.textContent = "Kilograms";
+    description.textContent = "Pounds to Kilograms";
   } else {
-    console.log("Switching to kilograms to pounds conversion");
     currentValue = false;
     conversionButton.removeEventListener("click", handleLbConvert);
     conversionButton.addEventListener("click", handleKgConvert);
     conversionButton.textContent = "Convert to Pounds";
     inputUnit.textContent = "Kilograms";
     resultUnit.textContent = "Pounds";
+    description.textContent = "Kilograms to Pounds";
   }
 });
   
