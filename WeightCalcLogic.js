@@ -46,6 +46,8 @@ switchButton.addEventListener("click", () => {
         inputUnit.textContent = "Pounds";
         resultUnit.textContent = "Kilograms";
         description.textContent = "Pounds to Kilograms";
+        kgInput.value = "0";
+        kgResult.textContent = "0.00";
     }
     else {
         currentValue = false;
@@ -55,6 +57,8 @@ switchButton.addEventListener("click", () => {
         inputUnit.textContent = "Kilograms";
         resultUnit.textContent = "Pounds";
         description.textContent = "Kilograms to Pounds";
+        kgInput.value = "0";
+        kgResult.textContent = "0.00";
     }
 });
 //# sourceMappingURL=WeightCalcLogic.js.map
