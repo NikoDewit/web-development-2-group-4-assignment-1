@@ -40,4 +40,18 @@ if (currentValue === false) {
 } else if (currentValue === true) {
   kgButton.addEventListener("click", handleLbConvert);
 }
+
+switchButton.addEventListener("click", () => {
+  if (currentValue === false) {
+    console.log("Switching to pounds to kilograms conversion");
+    currentValue = true;
+    kgButton.removeEventListener("click", handleKgConvert);
+    kgButton.addEventListener("click", handleLbConvert);
+  } else {
+    console.log("Switching to kilograms to pounds conversion");
+    currentValue = false;
+    kgButton.removeEventListener("click", handleLbConvert);
+    kgButton.addEventListener("click", handleKgConvert);
+  }
+});
   

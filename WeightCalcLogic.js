@@ -1,16 +1,51 @@
 "use strict";
 const kilogramsToPounds = (kilograms) => kilograms * 2.20462;
+const poundsToKilograms = (pounds) => pounds / 2.20462;
 const kgInput = document.getElementById("kg-input");
 const kgButton = document.getElementById("kg-button");
 const kgResult = document.getElementById("kg-result");
+const switchButton = document.getElementById("switch-button");
+let currentValue = false;
 const handleKgConvert = () => {
-  const values = kgInput.value.split(",").map((part) => Number(part.trim()));
-  if (values.some((v) => isNaN(v) || v <= 0)) {
-    kgResult.textContent = "Please enter positive numbers only";
-    return;
-  }
-  const pounds = values.map(kilogramsToPounds);
-  kgResult.textContent = pounds.map((p) => p.toFixed(2)).join(", ");
+    const values = kgInput.value
+        .split(",")
+        .map((part) => Number(part.trim()));
+    if (values.some((v) => isNaN(v) || v <= 0)) {
+        kgResult.textContent = "Please enter positive numbers separated by commas";
+        return;
+    }
+    const pounds = values.map(kilogramsToPounds);
+    kgResult.textContent = pounds.map((p) => p.toFixed(2)).join(", ");
 };
-kgButton.addEventListener("click", handleKgConvert);
+const handleLbConvert = () => {
+    const values = kgInput.value
+        .split(",")
+        .map((part) => Number(part.trim()));
+    if (values.some((v) => isNaN(v) || v <= 0)) {
+        kgResult.textContent = "Please enter positive numbers separated by commas";
+        return;
+    }
+    const kilograms = values.map(poundsToKilograms);
+    kgResult.textContent = kilograms.map((k) => k.toFixed(2)).join(", ");
+};
+if (currentValue === false) {
+    kgButton.addEventListener("click", handleKgConvert);
+}
+else if (currentValue === true) {
+    kgButton.addEventListener("click", handleLbConvert);
+}
+switchButton.addEventListener("click", () => {
+    if (currentValue === false) {
+        console.log("Switching to pounds to kilograms conversion");
+        currentValue = true;
+        kgButton.removeEventListener("click", handleKgConvert);
+        kgButton.addEventListener("click", handleLbConvert);
+    }
+    else {
+        console.log("Switching to kilograms to pounds conversion");
+        currentValue = false;
+        kgButton.removeEventListener("click", handleLbConvert);
+        kgButton.addEventListener("click", handleKgConvert);
+    }
+});
 //# sourceMappingURL=WeightCalcLogic.js.map
