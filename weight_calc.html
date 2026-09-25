@@ -1,76 +1,99 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weight Calculator</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <body class="bg-slate-100 dark:bg-gray-800 min-h-screen">
+    <header
+      class="bg-white dark:bg-gray-700 border-b border-slate-200 dark:border-gray-600"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html">
+          <h1
+            class="rounded-lg bg-slate-100 px-4 py-2 text-lg font-bold text-slate-900 dark:bg-gray-800 dark:text-slate-300"
+          >
+            Unit Converter
+          </h1>
+        </a>
+        <span
+          class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full dark:text-blue-100 dark:bg-blue-700"
+        >
+          CPRG 306 &middot; Assignment 1
+        </span>
+      </div>
+    </header>
 
-<body class="bg-slate-100 dark:bg-gray-800 min-h-screen">
-  <header class="bg-white dark:bg-gray-700 border-b border-slate-200 dark:border-gray-600">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <h1 class="text-lg font-bold text-slate-900 dark:text-slate-300">
-        Unit Converter
-      </h1>
-      <span
-        class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full dark:text-blue-100 dark:bg-blue-700">
-        CPRG 306 &middot; Assignment 1
-      </span>
-    </div>
-  </header>
+    <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+        Convert Weight
+      </h2>
+      <p
+        class="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-xl mx-auto"
+      >
+        A tool for converting weight: kilograms and pounds.
+      </p>
+    </section>
 
-  <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
-    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-      Convert Weight
-    </h2>
-    <p class="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-xl mx-auto">
-      A tool for converting weight:
-      kilograms and pounds.
-    </p>
-  </section>
-
-  <main class="max-w-5xl mx-auto px-6 pb-16">
-    <div class="grid grid-cols-1 gap-6">
-      <div class="bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
-          Weight
-        </h3>
-        <p class="text-sm text-slate-500 dark:text-slate-300 mt-1">
-          Kilograms to Pounds
-        </p>
-
-        <label for="kg-input" class="block text-sm font-medium text-slate-700 mt-5 mb-2">
-          Kilograms
-        </label>
-        <input id="kg-input" type="text" value="0"
-          class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-red-500 focus:outline-none" />
-
-        <button id="kg-button"
-          class="w-full mt-4 rounded-lg bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-700 transition cursor-pointer">
-          Convert
-        </button>
-        <div class="mt-5 rounded-lg bg-slate-50 dark:bg-gray-800 p-4 text-center">
-          <p class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300">
-            Pounds
+    <main class="max-w-5xl mx-auto px-6 pb-16">
+      <div class="grid grid-cols-1 gap-6">
+        <div class="bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
+            Weight
+          </h3>
+          <p class="text-sm text-slate-500 dark:text-slate-300 mt-1">
+            Kilograms to Pounds
           </p>
-          <p id="kg-result" class="text-2xl font-bold text-red-600 mt-1">
-            0.00
-          </p>
+
+          <label
+            for="kg-input"
+            class="block text-sm font-medium text-slate-700 mt-5 mb-2"
+          >
+            Kilograms
+          </label>
+          <input
+            id="kg-input"
+            type="text"
+            value="0"
+            class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-red-500 focus:outline-none"
+          />
+
+          <button
+            id="kg-button"
+            class="w-full mt-4 rounded-lg bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-700 transition cursor-pointer"
+          >
+            Convert
+          </button>
+          <div
+            class="mt-5 rounded-lg bg-slate-50 dark:bg-gray-800 p-4 text-center"
+          >
+            <p
+              class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300"
+            >
+              Pounds
+            </p>
+            <p id="kg-result" class="text-2xl font-bold text-red-600 mt-1">
+              0.00
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-  <footer class="bg-white dark:bg-gray-700 border-t border-slate-200 dark:border-gray-600">
-    <div class="max-w-5xl mx-auto px-6 py-6 text-center">
-      <p class="text-sm text-slate-500 dark:text-slate-300">
-        Built with Tailwind CSS and TypeScript &middot; CPRG 306 Web
-        Development 2
-      </p>
-    </div>
-  </footer>
-  <script src="WeightCalcLogic.js"></script>
-</body>
-
+    </main>
+    <footer
+      class="bg-white dark:bg-gray-700 border-t border-slate-200 dark:border-gray-600"
+    >
+      <div class="max-w-5xl mx-auto px-6 py-6 text-center">
+        <p class="text-sm text-slate-500 dark:text-slate-300">
+          Built with Tailwind CSS and TypeScript &middot; CPRG 306 Web
+          Development 2
+        </p>
+      </div>
+    </footer>
+    <script src="WeightCalcLogic.js"></script>
+  </body>
 </html>
