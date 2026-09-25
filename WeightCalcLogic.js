@@ -6,6 +6,7 @@ const conversionButton = document.getElementById("conversion-button");
 const kgResult = document.getElementById("kg-result");
 const inputUnit = document.getElementById("input-unit");
 const resultUnit = document.getElementById("result-unit");
+const description = document.getElementById("description");
 const switchButton = document.getElementById("switch-button");
 let currentValue = false;
 const handleKgConvert = () => {
@@ -38,22 +39,22 @@ else if (currentValue === true) {
 }
 switchButton.addEventListener("click", () => {
     if (currentValue === false) {
-        console.log("Switching to pounds to kilograms conversion");
         currentValue = true;
         conversionButton.removeEventListener("click", handleKgConvert);
         conversionButton.addEventListener("click", handleLbConvert);
         conversionButton.textContent = "Convert to Kilograms";
         inputUnit.textContent = "Pounds";
         resultUnit.textContent = "Kilograms";
+        description.textContent = "Pounds to Kilograms";
     }
     else {
-        console.log("Switching to kilograms to pounds conversion");
         currentValue = false;
         conversionButton.removeEventListener("click", handleLbConvert);
         conversionButton.addEventListener("click", handleKgConvert);
         conversionButton.textContent = "Convert to Pounds";
         inputUnit.textContent = "Kilograms";
         resultUnit.textContent = "Pounds";
+        description.textContent = "Kilograms to Pounds";
     }
 });
 //# sourceMappingURL=WeightCalcLogic.js.map
