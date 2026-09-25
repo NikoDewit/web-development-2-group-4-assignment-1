@@ -2,8 +2,10 @@ const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
 const poundsToKilograms = (pounds: number): number => pounds / 2.20462;
 
 const kgInput = document.getElementById("kg-input") as HTMLInputElement;
-const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
+const conversionButton = document.getElementById("conversion-button") as HTMLButtonElement;
 const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
+const inputUnit = document.getElementById("input-unit") as HTMLLabelElement;
+const resultUnit = document.getElementById("result-unit") as HTMLParagraphElement;
 const switchButton = document.getElementById("switch-button") as HTMLButtonElement;
 let currentValue : boolean = false;
 
@@ -36,22 +38,28 @@ const handleLbConvert = (): void => {
 };
 
 if (currentValue === false) {
-  kgButton.addEventListener("click", handleKgConvert);
+  conversionButton.addEventListener("click", handleKgConvert);
 } else if (currentValue === true) {
-  kgButton.addEventListener("click", handleLbConvert);
+  conversionButton.addEventListener("click", handleLbConvert);
 }
 
 switchButton.addEventListener("click", () => {
   if (currentValue === false) {
     console.log("Switching to pounds to kilograms conversion");
     currentValue = true;
-    kgButton.removeEventListener("click", handleKgConvert);
-    kgButton.addEventListener("click", handleLbConvert);
+    conversionButton.removeEventListener("click", handleKgConvert);
+    conversionButton.addEventListener("click", handleLbConvert);
+    conversionButton.textContent = "Convert to Kilograms";
+    inputUnit.textContent = "Pounds";
+    resultUnit.textContent = "Kilograms";
   } else {
     console.log("Switching to kilograms to pounds conversion");
     currentValue = false;
-    kgButton.removeEventListener("click", handleLbConvert);
-    kgButton.addEventListener("click", handleKgConvert);
+    conversionButton.removeEventListener("click", handleLbConvert);
+    conversionButton.addEventListener("click", handleKgConvert);
+    conversionButton.textContent = "Convert to Pounds";
+    inputUnit.textContent = "Kilograms";
+    resultUnit.textContent = "Pounds";
   }
 });
   

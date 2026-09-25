@@ -2,8 +2,10 @@
 const kilogramsToPounds = (kilograms) => kilograms * 2.20462;
 const poundsToKilograms = (pounds) => pounds / 2.20462;
 const kgInput = document.getElementById("kg-input");
-const kgButton = document.getElementById("kg-button");
+const conversionButton = document.getElementById("conversion-button");
 const kgResult = document.getElementById("kg-result");
+const inputUnit = document.getElementById("input-unit");
+const resultUnit = document.getElementById("result-unit");
 const switchButton = document.getElementById("switch-button");
 let currentValue = false;
 const handleKgConvert = () => {
@@ -29,23 +31,29 @@ const handleLbConvert = () => {
     kgResult.textContent = kilograms.map((k) => k.toFixed(2)).join(", ");
 };
 if (currentValue === false) {
-    kgButton.addEventListener("click", handleKgConvert);
+    conversionButton.addEventListener("click", handleKgConvert);
 }
 else if (currentValue === true) {
-    kgButton.addEventListener("click", handleLbConvert);
+    conversionButton.addEventListener("click", handleLbConvert);
 }
 switchButton.addEventListener("click", () => {
     if (currentValue === false) {
         console.log("Switching to pounds to kilograms conversion");
         currentValue = true;
-        kgButton.removeEventListener("click", handleKgConvert);
-        kgButton.addEventListener("click", handleLbConvert);
+        conversionButton.removeEventListener("click", handleKgConvert);
+        conversionButton.addEventListener("click", handleLbConvert);
+        conversionButton.textContent = "Convert to Kilograms";
+        inputUnit.textContent = "Pounds";
+        resultUnit.textContent = "Kilograms";
     }
     else {
         console.log("Switching to kilograms to pounds conversion");
         currentValue = false;
-        kgButton.removeEventListener("click", handleLbConvert);
-        kgButton.addEventListener("click", handleKgConvert);
+        conversionButton.removeEventListener("click", handleLbConvert);
+        conversionButton.addEventListener("click", handleKgConvert);
+        conversionButton.textContent = "Convert to Pounds";
+        inputUnit.textContent = "Kilograms";
+        resultUnit.textContent = "Pounds";
     }
 });
 //# sourceMappingURL=WeightCalcLogic.js.map
