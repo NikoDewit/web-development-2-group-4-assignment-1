@@ -10,6 +10,7 @@
 
 <body class="bg-slate-100 dark:bg-gray-800 min-h-screen flex flex-col">
 
+  <!-- Header containing a homepage button and course information -->
   <header class="bg-white dark:bg-gray-700 border-b border-slate-200 dark:border-gray-600">
     <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html">
@@ -28,6 +29,7 @@
     </div>
   </header>
 
+  <!-- Section containing the website title and description -->
   <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
       Unit Conversion Calculator
@@ -41,51 +43,51 @@
   <main class="max-w-5xl mx-auto px-6 pb-16 mt-6 sm:mt-10 lg:mt-16 flex-grow">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- Weight -->
+      <!-- Weight box and button -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Weight
         </h3>
 
         <button
-          onclick="window.location.href='weight_calc.html'"
+          onclick="window.location.href='pages/weight_calc.html'"
           class="w-full mt-4 rounded-lg bg-green-600 px-3 py-3 font-semibold text-white text-base sm:text-lg leading-tight hover:bg-green-700 transition cursor-pointer inline-flex items-center justify-center"
         >
           Convert Pounds (lb) to Kilograms (kg)
         </button>
       </div>
 
-      <!-- Distance -->
+      <!-- Distance box and button -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Distance
         </h3>
 
         <button
-          onclick="window.location.href='distance_calc.html'"
+          onclick="window.location.href='pages/distance_calc.html'"
           class="w-full mt-4 rounded-lg bg-red-600 px-3 py-3 font-semibold text-white text-base sm:text-lg leading-tight hover:bg-red-700 transition cursor-pointer inline-flex items-center justify-center"
         >
           Convert Miles (mi) to Kilometres (km)
         </button>
       </div>
 
-      <!-- Temperature -->
+      <!-- Temperature box and button -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Temperature
         </h3>
 
         <button
-          onclick="window.location.href='temperature_calc.html'"
+          onclick="window.location.href='pages/temperature_calc.html'"
           class="w-full mt-4 rounded-lg bg-blue-600 px-3 py-3 font-semibold text-white text-base sm:text-lg leading-tight hover:bg-blue-700 transition cursor-pointer inline-flex items-center justify-center"
         >
           Convert Celsius (°C) to Fahrenheit (°F)
         </button>
       </div>
-
     </div>
   </main>
 
+  <!-- Footer containing the developer credits -->
   <footer class="bg-white dark:bg-gray-700 border-t border-slate-200 dark:border-gray-600">
     <div class="max-w-5xl mx-auto px-6 py-6 text-center">
       <p class="text-sm text-slate-500 dark:text-slate-300">
@@ -94,8 +96,5 @@
       </p>
     </div>
   </footer>
-
-  <script src="main.js"></script>
 </body>
-
 </html>
