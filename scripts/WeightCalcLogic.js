@@ -1,64 +1,96 @@
 "use strict";
-const kilogramsToPounds = (kilograms) => kilograms * 2.20462;
-const poundsToKilograms = (pounds) => pounds / 2.20462;
-const kgInput = document.getElementById("kg-input");
-const conversionButton = document.getElementById("conversion-button");
-const kgResult = document.getElementById("kg-result");
-const inputUnit = document.getElementById("input-unit");
-const resultUnit = document.getElementById("result-unit");
-const description = document.getElementById("description");
-const switchButton = document.getElementById("switch-button");
-let currentValue = false;
+// Higher-order function for weight conversion
+const createWeightConverter = (fromUnit, toUnit) => {
+    return (value) => {
+        const convertValue = (weight) => {
+            if (fromUnit === "kg" && toUnit === "lb") {
+                return weight * 2.20462;
+            }
+            if (fromUnit === "lb" && toUnit === "kg") {
+                return weight / 2.20462;
+            }
+            return weight;
+        };
+        if (Array.isArray(value)) {
+            return value.map(convertValue);
+        }
+        return convertValue(value);
+    };
+};
+// Two weight conversion functions
+const kilogramsToPounds = createWeightConverter("kg", "lb");
+const poundsToKilograms = createWeightConverter("lb", "kg");
+// Get HTML elements
+const weightInput = document.getElementById("kg-input");
+const weightConversionButton = document.getElementById("conversion-button");
+const weightResult = document.getElementById("kg-result");
+const weightInputUnit = document.getElementById("input-unit");
+const weightResultUnit = document.getElementById("result-unit");
+const weightDescription = document.getElementById("description");
+const weightSwitchButton = document.getElementById("switch-button");
+// false = Kilograms to Pounds
+// true = Pounds to Kilograms
+let weightCurrentValue = false;
+// Convert Kilograms to Pounds
 const handleKgConvert = () => {
-    const values = kgInput.value
+    const values = weightInput.value
         .split(",")
         .map((part) => Number(part.trim()));
-    if (values.some((v) => isNaN(v) || v <= 0)) {
-        kgResult.textContent = "Please enter positive numbers separated by commas";
+    // Check for invalid input
+    if (values.some((value) => isNaN(value) || value <= 0)) {
+        weightResult.textContent =
+            "Please enter positive numbers separated by commas";
         return;
     }
-    const pounds = values.map(kilogramsToPounds);
-    kgResult.textContent = pounds.map((p) => p.toFixed(2)).join(", ");
+    // Convert kilograms to pounds
+    const pounds = kilogramsToPounds(values);
+    // Display the converted values
+    weightResult.textContent = pounds.map((value) => value.toFixed(2)).join(", ");
 };
+// Convert Pounds to Kilograms
 const handleLbConvert = () => {
-    const values = kgInput.value
+    const values = weightInput.value
         .split(",")
         .map((part) => Number(part.trim()));
-    if (values.some((v) => isNaN(v) || v <= 0)) {
-        kgResult.textContent = "Please enter positive numbers separated by commas";
+    // Check for invalid input
+    if (values.some((value) => isNaN(value) || value <= 0)) {
+        weightResult.textContent =
+            "Please enter positive numbers separated by commas";
         return;
     }
-    const kilograms = values.map(poundsToKilograms);
-    kgResult.textContent = kilograms.map((k) => k.toFixed(2)).join(", ");
+    // Convert pounds to kilograms
+    const kilograms = poundsToKilograms(values);
+    // Display the converted values
+    weightResult.textContent = kilograms
+        .map((value) => value.toFixed(2))
+        .join(", ");
 };
-if (currentValue === false) {
-    conversionButton.addEventListener("click", handleKgConvert);
-}
-else if (currentValue === true) {
-    conversionButton.addEventListener("click", handleLbConvert);
-}
-switchButton.addEventListener("click", () => {
-    if (currentValue === false) {
-        currentValue = true;
-        conversionButton.removeEventListener("click", handleKgConvert);
-        conversionButton.addEventListener("click", handleLbConvert);
-        conversionButton.textContent = "Convert to Kilograms";
-        inputUnit.textContent = "Pounds";
-        resultUnit.textContent = "Kilograms";
-        description.textContent = "Pounds to Kilograms";
-        kgInput.value = "0";
-        kgResult.textContent = "0.00";
+// Convert button
+weightConversionButton.addEventListener("click", () => {
+    if (weightCurrentValue === false) {
+        handleKgConvert();
     }
     else {
-        currentValue = false;
-        conversionButton.removeEventListener("click", handleLbConvert);
-        conversionButton.addEventListener("click", handleKgConvert);
-        conversionButton.textContent = "Convert to Pounds";
-        inputUnit.textContent = "Kilograms";
-        resultUnit.textContent = "Pounds";
-        description.textContent = "Kilograms to Pounds";
-        kgInput.value = "0";
-        kgResult.textContent = "0.00";
+        handleLbConvert();
+    }
+});
+// Switch between Kilograms and Pounds
+weightSwitchButton.addEventListener("click", () => {
+    weightCurrentValue = !weightCurrentValue;
+    // Reset input and result when switching
+    weightInput.value = "0";
+    weightResult.textContent = "0.00";
+    if (weightCurrentValue === false) {
+        weightConversionButton.textContent = "Convert to Pounds";
+        weightInputUnit.textContent = "Kilograms";
+        weightResultUnit.textContent = "Pounds";
+        weightDescription.textContent = "Kilograms to Pounds";
+    }
+    else {
+        weightConversionButton.textContent = "Convert to Kilograms";
+        weightInputUnit.textContent = "Pounds";
+        weightResultUnit.textContent = "Kilograms";
+        weightDescription.textContent = "Pounds to Kilograms";
     }
 });
 //# sourceMappingURL=WeightCalcLogic.js.map
