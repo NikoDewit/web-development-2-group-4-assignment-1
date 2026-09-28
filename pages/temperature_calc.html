@@ -1,8 +1,12 @@
-<!-- 
-  Assignment 1 - Unit Converter Web Application
-  Made by Doug, Daniel, Caelan, and Niko
-  Temperature conversion page for the Unit Converter web application. 
-  Provides a tool to convert between Celsius and Fahrenheit and vice versa.
+<!--
+  Assignment 1: Unit Converter Web Application
+  Names: Doug Dickens, Niko Dewit, Daniel Carpintero, and Caelan Abugan
+  Date: September 28, 2026
+  This page converts temperatures between Celsius and Fahrenheit in either direction.
+  The user enters one or more numeric temperatures in the text field, separated by commas.
+  The script parses and validates each value, then applies the appropriate temperature conversion formula.
+  The page displays each converted temperature rounded to two decimal places or an error for invalid input.
+  The switch control changes the conversion direction and updates the unit labels and controls.
 -->
 
 <!doctype html>
@@ -15,7 +19,7 @@
   </head>
 
   <body class="bg-slate-100 dark:bg-gray-800 min-h-screen flex flex-col">
-    <!-- Header block that contains a link to the home page and assignment info -->
+    <!-- Site header: links back to the home page and identifies the course assignment. -->
     <header
       class="bg-white dark:bg-gray-700 border-b border-slate-200 dark:border-gray-600"
     >
@@ -38,7 +42,7 @@
       </div>
     </header>
 
-    <!-- Section block that contains the page title and description -->
+    <!-- Introduction: identifies the temperature calculator and its supported units. -->
     <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
         Convert Temperature
@@ -51,14 +55,10 @@
       </p>
     </section>
 
-    <!-- 
-    Main content block that contains the input and result boxes 
-    First column contains the input box for entering the temperature to be converted.
-    Second column contains the result box for displaying the conversion result.
-    -->
+    <!-- Converter workspace: groups the temperature input controls with the conversion output. -->
     <main class="max-w-5xl mx-auto px-6 pb-16 mt-6 sm:mt-10 lg:mt-16 flex-grow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Input Box -->
+        <!-- Input panel: accepts comma-separated temperatures and provides conversion controls. -->
         <div
           class="bg-white dark:bg-gray-700 text-center rounded-2xl shadow-md p-6"
         >
@@ -98,7 +98,7 @@
           </button>
         </div>
 
-        <!-- Result Box -->
+        <!-- Result panel: displays the output unit and converted temperature values. -->
         <div
           class="bg-white dark:bg-gray-700 text-center rounded-2xl shadow-md p-6"
         >
@@ -125,7 +125,7 @@
       </div>
     </main>
 
-    <!-- Footer block that contains developer info -->
+    <!-- Site footer: credits the project group and course. -->
     <footer
       class="bg-white dark:bg-gray-700 border-t border-slate-200 dark:border-gray-600"
     >

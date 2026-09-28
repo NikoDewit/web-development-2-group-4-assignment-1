@@ -1,4 +1,14 @@
-// Higher-order function for temperature conversion
+/*
+  Assignment 1: Unit Converter Web Application
+  Names: Doug Dickens, Niko Dewit, Daniel Carpintero, and Caelan Abugan
+  Date: September 28, 2026
+  This program converts temperatures between Celsius and Fahrenheit in either direction.
+  It reads comma-separated numeric temperatures from the page, parses them, and rejects invalid values.
+  It applies the appropriate temperature formula to each accepted value and formats the results to two decimal places.
+  The program displays converted values or a validation message and lets the user switch the conversion direction.
+*/
+
+// Conversion factory: selects the temperature formula and converts one value or an array of values.
 const createTemperatureConverter = (
   fromUnit: string,
   toUnit: string,
@@ -24,12 +34,12 @@ const createTemperatureConverter = (
   };
 };
 
-// Create the two temperature conversion functions
+// Configure conversion functions for both supported directions.
 const celsiusToFahrenheit = createTemperatureConverter("C", "F");
 
 const fahrenheitToCelsius = createTemperatureConverter("F", "C");
 
-// Get HTML elements
+// Cache the page controls used to read input and display conversion results.
 const temperatureInput = document.getElementById(
   "temperature-input",
 ) as HTMLInputElement;
@@ -58,55 +68,48 @@ const temperatureDescription = document.getElementById(
   "description",
 ) as HTMLParagraphElement;
 
-// false = Celsius to Fahrenheit
-// true = Fahrenheit to Celsius
+// Track whether the calculator is converting Celsius to Fahrenheit or the reverse.
 let temperatureCurrentValue: boolean = false;
 
-// Convert Celsius to Fahrenheit
+// Parse and validate input, convert Celsius to Fahrenheit, and display formatted results.
 const handleCelsiusConvert = (): void => {
   const values: number[] = temperatureInput.value
     .split(",")
     .map((part) => Number(part.trim()));
 
-  // Check for invalid input
   if (values.some((value) => isNaN(value))) {
     temperatureResult.textContent =
       "Please enter valid numbers separated by commas";
     return;
   }
 
-  // Convert Celsius values to Fahrenheit
   const fahrenheit = celsiusToFahrenheit(values) as number[];
 
-  // Display the converted values
   temperatureResult.textContent = fahrenheit
     .map((value) => value.toFixed(2))
     .join(", ");
 };
 
-// Convert Fahrenheit to Celsius
+// Parse and validate input, convert Fahrenheit to Celsius, and display formatted results.
 const handleFahrenheitConvert = (): void => {
   const values: number[] = temperatureInput.value
     .split(",")
     .map((part) => Number(part.trim()));
 
-  // Check for invalid input
   if (values.some((value) => isNaN(value))) {
     temperatureResult.textContent =
       "Please enter valid numbers separated by commas";
     return;
   }
 
-  // Convert Fahrenheit values to Celsius
   const celsius = fahrenheitToCelsius(values) as number[];
 
-  // Display the converted values
   temperatureResult.textContent = celsius
     .map((value) => value.toFixed(2))
     .join(", ");
 };
 
-// Convert button
+// Run the conversion handler for the currently selected direction.
 temperatureButton.addEventListener("click", (): void => {
   if (temperatureCurrentValue === false) {
     handleCelsiusConvert();
@@ -115,11 +118,10 @@ temperatureButton.addEventListener("click", (): void => {
   }
 });
 
-// Switch between Celsius and Fahrenheit
+// Toggle conversion direction and update the input, result, and unit labels.
 switchTemperatureButton.addEventListener("click", (): void => {
   temperatureCurrentValue = !temperatureCurrentValue;
 
-  // Reset input and result when switching
   temperatureInput.value = "0";
   temperatureResult.textContent = "0.00";
 

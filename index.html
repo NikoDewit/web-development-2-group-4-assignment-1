@@ -1,8 +1,11 @@
-<!-- 
-  Assignment 1 - Unit Converter Web Application
-  Made by Doug, Daniel, Caelan, and Niko
-  Every page includes both a light and darkmode theme that pulls from the users system preferences.
-  Index page for the Unit Converter web application. Provides links to weight, distance, and temperature conversion tools.
+<!--
+  Assignment 1: Unit Converter Web Application
+  Names: Doug Dickens, Niko Dewit, Daniel Carpintero, and Caelan Abugan
+  Date: September 28, 2026
+  This page is the home screen for a web application that converts weight, distance, and temperature.
+  The user selects a conversion tool by choosing its link on this page.
+  The browser processes that selection by navigating to the corresponding calculator page.
+  The selected page provides the input controls and displays the requested conversion result.
 -->
 
 <!DOCTYPE html>
@@ -16,7 +19,7 @@
 </head>
 
 <body class="bg-slate-100 dark:bg-gray-800 min-h-screen flex flex-col">
-  <!-- Header containing a homepage button and course information -->
+  <!-- Site header: provides a link to the home page and identifies the course assignment. -->
   <header class="bg-white dark:bg-gray-700 border-b border-slate-200 dark:border-gray-600">
     <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html">
@@ -34,7 +37,7 @@
     </div>
   </header>
 
-  <!-- Section containing the website title and description -->
+  <!-- Introduction: names the application and summarizes its purpose. -->
   <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
       Unit Conversion Calculator
@@ -44,14 +47,11 @@
     </p>
   </section>
 
-  <!-- 
-  Main content block that contains the conversion tool links 
-  Each button links to a specific conversion tool page.
-  -->
+  <!-- Converter navigation: each button opens its matching weight, distance, or temperature calculator. -->
   <main class="max-w-5xl mx-auto px-6 pb-16 mt-6 sm:mt-10 lg:mt-16 flex-grow">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- Weight box and button -->
+      <!-- Weight converter link: opens the kilograms-to-pounds calculator. -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Weight
@@ -64,7 +64,7 @@
         </button>
       </div>
 
-      <!-- Distance box and button -->
+      <!-- Distance converter link: opens the kilometres-to-miles calculator. -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Distance
@@ -77,7 +77,7 @@
         </button>
       </div>
 
-      <!-- Temperature box and button -->
+      <!-- Temperature converter link: opens the Celsius-to-Fahrenheit calculator. -->
       <div class="text-center bg-white dark:bg-gray-700 rounded-2xl shadow-md p-6">
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
           Temperature
@@ -92,7 +92,7 @@
     </div>
   </main>
 
-  <!-- Footer containing the developer credits -->
+  <!-- Site footer: credits the project group and course. -->
   <footer class="bg-white dark:bg-gray-700 border-t border-slate-200 dark:border-gray-600">
     <div class="max-w-5xl mx-auto px-6 py-6 text-center">
       <p class="text-sm text-slate-500 dark:text-slate-300">
